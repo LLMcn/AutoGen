@@ -1,0 +1,24 @@
+# Bandit 安全扫描配置 (YAML 格式)
+# 只扫描项目代码，排除第三方依赖
+
+exclude_dirs:
+  - '.pip-packages'
+  - '.nix-profile'
+  - 'result'
+  - '__pycache__'
+  - '.mypy_cache'
+  - '.ruff_cache'
+  - '.git'
+
+# 排除的测试类型（示例代码中可接受的低风险警告）
+skips:
+  - B311  # 伪随机数生成器 (示例代码中用于演示)
+  - B110  # try/except/pass (清理代码中可以接受)
+  - B404  # subprocess导入 (测试脚本需要)
+  - B603  # subprocess调用 (测试脚本中安全使用)
+
+# 严重级别过滤
+severity: medium
+
+# 信心级别过滤  
+confidence: medium 
